@@ -1,6 +1,9 @@
+from os import getenv
+from datetime import datetime
 from flask import jsonify, abort, request
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
+
 
 import database
 
@@ -83,9 +86,9 @@ def init_match_routes(app, db):
 
         password = request.form.get("Password", "")
 
-        print(request.form)
+        print(getenv("PASSWORD"))
         if not check_password_hash(
-            generate_password_hash("temppass"), password
+            generate_password_hash(getenv("PASSWORD")), password
         ):  # move to environmental variable
             abort(401)
         if (
@@ -100,15 +103,20 @@ def init_match_routes(app, db):
         ):
             abort(400)
         user_match_1 = database.matches.create_user_match(
-            db, player_1, army_1, detachment_1, VP_1, player_1 == winner, commit=False
+            db, player_1, army_1, detachment_1, VP_1, player_1 == winner, commit=True
         )
 
         user_match_2 = database.matches.create_user_match(
-            db, player_2, army_2, detachment_2, VP_2, player_2 == winner, commit=False
+            db, player_2, army_2, detachment_2, VP_2, player_2 == winner, commit=True
         )
 
+        date_splits = date.split("-")
         match = database.matches.create_match(
-            db, date, mission_pack, [user_match_1, user_match_2], commit=False
+            db,
+            datetime(int(date_splits[0]), int(date_splits[1]), int(date_splits[2])),
+            mission_pack,
+            [user_match_1, user_match_2],
+            commit=True,
         )
 
         return jsonify(format_match_obj(match))

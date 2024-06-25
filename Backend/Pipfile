@@ -11,6 +11,7 @@ werkzeug = "*"
 flask-seeder = "*"
 flask-cors = "*"
 psycopg2 = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

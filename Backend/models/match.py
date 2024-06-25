@@ -13,7 +13,7 @@ class Match(db.Model):
 
     # Attributes
     id = db.mapped_column(db.Integer, primary_key=True, autoincrement=True)
-    date = db.mapped_column(db.DateTime)
+    date = db.mapped_column(db.DateTime, nullable=False)
     mission_pack = db.mapped_column(db.Text, default="L")
 
     def __init__(self, date, mission_pack="L"):
@@ -30,7 +30,7 @@ class UserMatch(db.Model):
     __tablename__ = "user_matches"
 
     id = db.mapped_column(db.Integer, primary_key=True, autoincrement=True)
-    match_id = db.mapped_column(db.ForeignKey("matches.id"))
+    match_id = db.mapped_column(db.ForeignKey("matches.id"), nullable=False)
     match = db.relationship("Match", back_populates="user_matches")
     player_id = db.mapped_column(db.ForeignKey("users.id"))
     player = db.relationship("User", back_populates="matches")
