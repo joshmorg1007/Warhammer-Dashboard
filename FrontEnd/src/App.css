@@ -1,0 +1,207 @@
+html {
+    zoom: 120%;
+}
+
+.navbar {
+    width: 100%;
+    min-height: 6vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    transition: all .7s ease-in;
+}
+
+.Dashboard-Grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: "player player player global"
+        "player player player global"
+        "match match match match";
+    gap: 10px;
+    padding: 10px;
+}
+
+.Dashboard-Grid-Player {
+    grid-area: player;
+}
+
+.Dashboard-Grid-Global {
+    grid-area: global;
+
+}
+
+.Dashboard-Grid-Match {
+    grid-area: match;
+}
+
+.Dashboard-Grid-Army {
+    width: 98%;
+    height: 95%;
+    padding: 10px;
+}
+
+.Player-Dashboard-Grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: "faction faction faction WR"
+        "player player player player"
+        "match match match match";
+    gap: 10px;
+    padding: 10px;
+}
+
+.Player-Dashboard-Grid .Table-Container {
+    grid-area: faction;
+    border-radius: 20px;
+    height: 100%;
+    padding: 0 10px 10px 10px;
+    overflow-y: auto;
+}
+
+.Table-Container {
+    background-color: #1e1f2500;
+    border-radius: 20px;
+    height: 70vh;
+    padding: 0 10px 10px 10px;
+    overflow-y: auto;
+    min-width: 400px;
+}
+
+.UserWinRateChart {
+    border-radius: 20px;
+    padding-right: 20%;
+    position: relative;
+    background-color: #9c9292;
+    grid-area: WR;
+    min-width: 200px;
+    min-height: 100px;
+    max-height: 400px;
+    height: 100%;
+    width: 100%;
+}
+
+Table thead {
+    position: sticky;
+    top: 0px;
+    margin: 0 0 0 0;
+    border-radius: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+table th {
+    background-color: #9c3333;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid #847c7c;
+    border-bottom: 1px solid #847c7c;
+}
+
+table tr:nth-child(even) td {
+    background-color: #847c7c;
+}
+
+table tr:nth-child(odd) td {
+    background-color: #9c9292;
+}
+
+table tr:hover td {
+    background-color: #4f4e4c;
+}
+
+table td {
+    background-color: #847c7c;
+    padding: 10px;
+    border-bottom: 1px solid #847c7c;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+table td a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+table td a:hover {
+    color: #a49c9c;
+    text-decoration: none;
+}
+
+.more-button {
+    width: 100%;
+}
+
+.bar {
+    height: 4px;
+    margin-top: 3px;
+    width: 98%;
+}
+
+.bar .segment {
+    background: rgb(228, 9, 9);
+    content: ".";
+    display: inline-block;
+    height: 4px;
+    text-indent: -2000px;
+    vertical-align: top;
+}
+
+.subtext {
+    font-weight: 200;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.6);
+    min-height: 14px;
+    vertical-align: top;
+}
+
+.MatchInput {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: "p1 p2"
+        "p1 p2"
+        "rest rest";
+    gap: 10px;
+    padding: 10px;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.PlayerOneInput {
+    grid-area: p1;
+    display: grid;
+    align-items: center;
+}
+
+.PlayerTwoInput {
+    grid-area: p2;
+    display: grid;
+    align-items: center;
+}
+
+.rest {
+    grid-area: rest;
+    display: grid;
+    align-items: center;
+}
