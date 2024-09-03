@@ -11,12 +11,12 @@ function LatestMatchTable(props) {
 
     useEffect(() => {
 
-        fetch(URL + props.url + "/" + props.number)
+        fetch(URL + props.url + props.number)
             .then(response => response.json())
             .then(data => { setMatchData(data) }).catch(rejected => {
                 console.log(rejected);
             });
-    }, [props.url, props.number])
+    }, [props.url, props.number, URL])
 
 
     const showMoreMatches = () => {

@@ -19,7 +19,7 @@ function LatestMatch(props) {
             <td>
                 <Link style={{ color: '#9c3333' }} to={{ pathname: `/users/${props.player_1}` }}> {props.player_1}</Link>
             </td>
-            <td> {props.army_1}
+            <td> <Link to={{ pathname: `/armies/${props.army_1}` }}> {props.army_1}</Link>
                 <div className="subtext minor">{props.detachment_1}</div>
             </td>
             <td> {props.vp_1}
@@ -27,7 +27,7 @@ function LatestMatch(props) {
             <td>
                 <Link style={{ color: '#2A1CA1' }} to={{ pathname: `/users/${props.player_2}` }}> {props.player_2}</Link>
             </td>
-            <td> {props.army_2}
+            <td> <Link to={{ pathname: `/armies/${props.army_2}` }}> {props.army_2}</Link>
                 <div className="subtext minor">{props.detachment_2}</div>
             </td>
             <td> {props.vp_2}

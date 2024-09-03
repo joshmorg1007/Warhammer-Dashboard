@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
-
-function ArmyStatSummary(props) {
+function DetachmentStatSummary(props) {
     return (
         <tr>
-            <td> <Link to={{ pathname: `/armies/${props.army}` }}> {props.army}</Link>
+            <td> {props.detachment}
             </td>
             <td> {props.matches}
                 <div className="bar bar-default">
@@ -24,4 +22,4 @@ function ArmyStatSummary(props) {
     );
 }
 
-export default ArmyStatSummary;
+export default DetachmentStatSummary;

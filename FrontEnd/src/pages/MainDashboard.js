@@ -5,8 +5,8 @@ import GlobalStatTable from '../components/Tables/GlobalStatTable';
 function MainDashboard() {
     return (
         <div className='Dashboard-Grid'>
-            <PlayerStatSummaryTable></PlayerStatSummaryTable>
-            <GlobalStatTable></GlobalStatTable>
+            <PlayerStatSummaryTable url={"users/stats"}></PlayerStatSummaryTable>
+            <GlobalStatTable ></GlobalStatTable>
             <LatestMatchTable url={"matches/"} number={"10"}></LatestMatchTable>
         </div >
     );

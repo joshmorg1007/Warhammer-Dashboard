@@ -76,12 +76,29 @@ html {
     padding-right: 20%;
     position: relative;
     background-color: #9c9292;
+    overflow: hidden;
     grid-area: WR;
     min-width: 200px;
     min-height: 100px;
     max-height: 400px;
     height: 100%;
-    width: 100%;
+    width: 90%;
+}
+
+
+.Army-Dashboard-Grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: "detachment detachment detachment detachment"
+        "player player player player"
+        "match match match match";
+    gap: 10px;
+    padding: 10px;
+}
+
+.Dashboard-Grid-Detachment {
+    grid-area: detachment;
 }
 
 Table thead {

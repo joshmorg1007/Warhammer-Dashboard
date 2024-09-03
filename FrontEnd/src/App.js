@@ -3,6 +3,7 @@ import NavBar from './components/NavBar';
 import { useEffect } from 'react';
 
 import MainDashboard from './pages/MainDashboard';
+import ArmiesDashboard from "./pages/ArmiesDashboard";
 import ArmyDashboard from "./pages/ArmyDashboard";
 import PlayerDashboard from "./pages/PlayerDashboard";
 import MatchInput from "./pages/MatchInput";
@@ -26,7 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainDashboard />}></Route>
             <Route path="/users/:name" element={<PlayerDashboard />}></Route>
-            <Route path="/armies" element={<ArmyDashboard />}></Route>
+            <Route path="/armies" element={<ArmiesDashboard />}></Route>
             <Route path="/armies/:name" element={<ArmyDashboard />}></Route>
             <Route path="/detachments/:name" element={<MainDashboard />}></Route>
             <Route path="/Match/Input" element={<MatchInput />}></Route>

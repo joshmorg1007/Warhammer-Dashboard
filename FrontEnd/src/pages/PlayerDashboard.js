@@ -13,7 +13,7 @@ function PlayerDashboard() {
             <ArmyStatSummaryTable url={"users/" + name + "/armies"}></ArmyStatSummaryTable>
             <WinRateLineChart user={name}></WinRateLineChart>
             <PlayerVersusSummaryTable user={name}></PlayerVersusSummaryTable>
-            <LatestMatchTable url={"matches/" + name + "/"} number={"5"}></LatestMatchTable>
+            <LatestMatchTable url={"matches/users/" + name + "/"} number={"5"}></LatestMatchTable>
         </div>
 
     );

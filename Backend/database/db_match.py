@@ -110,3 +110,6 @@ class DBMatch:
             avg_vp += match.vp
 
         return avg_vp / count
+
+    def get_matches_by_detachtment(self, detachment_id):
+        return UserMatch.query.filter_by(detachment_id=detachment_id)

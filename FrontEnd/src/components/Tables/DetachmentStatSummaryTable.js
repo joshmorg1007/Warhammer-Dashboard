@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import DetachmentStatSummary from "./Rows/DetachmentStatSummary";
 
-import PlayerStatSummary from "./Rows/PlayerStatSummary";
+import { useState, useEffect } from "react";
 
-function PlayerStatSummaryTable(props) {
-    const [player_data, setPlayerData] = useState([])
+function DetachmentStatSummaryTable(props) {
+    const [detachmentData, setDetachmentData] = useState([])
 
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' })
 
     const URL = process.env.REACT_APP_BACKEND_URL;
 
     useEffect(() => {
-        fetch(URL + props.url)
+
+        fetch(URL + props.url + "/detachments/stats")
             .then(response => response.json())
-            .then(data => { setPlayerData(data) }).catch(rejected => {
+            .then(data => { setDetachmentData(data) }).catch(rejected => {
                 console.log(rejected);
             });
     }, [props.url, URL])
@@ -23,7 +24,7 @@ function PlayerStatSummaryTable(props) {
             direction = 'descending';
         }
 
-        const sortedData = [...player_data].sort((a, b) => {
+        const sortedData = [...detachmentData].sort((a, b) => {
             if (a[key] < b[key]) {
                 return direction === 'ascending' ? -1 : 1;
             }
@@ -33,18 +34,18 @@ function PlayerStatSummaryTable(props) {
             return 0;
         });
         setSortConfig({ key, direction });
-        setPlayerData(sortedData);
+        setDetachmentData(sortedData);
     };
 
-    const matches = player_data.map((p) => {
+    const matches = detachmentData.map((p) => {
         return (p.matches);
     })
 
-    const winrate = player_data.map((p) => {
+    const winrate = detachmentData.map((p) => {
         return (p.winrate);
     })
 
-    const avg_vp = player_data.map((p) => {
+    const avg_vp = detachmentData.map((p) => {
         return (p.avg_vp);
     })
 
@@ -60,26 +61,28 @@ function PlayerStatSummaryTable(props) {
 
 
     return (
-        <table className='Dashboard-Grid-Player'>
+        <table className='Dashboard-Grid-Detachment' >
             <thead>
                 <tr>
-                    <th onClick={() => sortData('player')}>Player</th>
+                    <th onClick={() => sortData('detachment')}> detachment</th>
                     <th onClick={() => sortData('matches')} > Matches</th>
                     <th onClick={() => sortData('winrate')} > Winrate</th>
                     <th onClick={() => sortData('avg_vp')} > AVG VP</th>
                 </tr >
             </thead >
             <tbody>
-                {player_data.map((p) => {
+                {detachmentData.map((p) => {
                     return (
-                        <PlayerStatSummary key={p.player} player={p.player} matches={p.matches} winrate={p.winrate} avg_vp={p.avg_vp} matches_line_width={get_relative_line_width("matches", p.matches)} wr_line_width={get_relative_line_width("winrate", p.winrate)} avg_vp_line_width={get_relative_line_width("avg_vp", p.avg_vp)}></PlayerStatSummary>
+                        <DetachmentStatSummary key={p.detachment} detachment={p.detachment} matches={p.matches} winrate={p.winrate} avg_vp={p.avg_vp} matches_line_width={get_relative_line_width("matches", p.matches)} wr_line_width={get_relative_line_width("winrate", p.winrate)} avg_vp_line_width={get_relative_line_width("avg_vp", p.avg_vp)}></DetachmentStatSummary>
                     );
                 })
                 }
             </tbody>
         </table >
 
+
+
     );
 }
 
-export default PlayerStatSummaryTable;
+export default DetachmentStatSummaryTable;

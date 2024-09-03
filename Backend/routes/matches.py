@@ -121,10 +121,26 @@ def init_match_routes(app, db):
 
         return jsonify(format_match_obj(match))
 
-    @app.route("/matches/<name>/<number>", methods=["GET"])
+    @app.route("/matches/users/<name>/<number>", methods=["GET"])
     def get_matches_from_user(name, number):
         user = database.users.get_user_by_name(name)
         m = [user_match.match for user_match in user.matches]
+        matches = sorted(
+            format_matches_obj(m),
+            key=lambda x: x["date"],
+            reverse=True,
+        )
+        if number == "all":
+            return jsonify(matches)
+        if number.isnumeric():
+            return jsonify(matches[: int(number)])
+        else:
+            abort(400)
+
+    @app.route("/matches/armies/<name>/<number>", methods=["GET"])
+    def get_matches_from_armies(name, number):
+        army = database.armies.get_army_by_name(name)
+        m = [user_match.match for user_match in army.matches]
         matches = sorted(
             format_matches_obj(m),
             key=lambda x: x["date"],

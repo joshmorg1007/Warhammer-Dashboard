@@ -17,7 +17,7 @@ function PlayerVersusSummaryTable(props) {
             .then(data => { setPlayerData(data) }).catch(rejected => {
                 console.log(rejected);
             });
-    }, [props.user])
+    }, [props.user, URL])
 
     const sortData = (key) => {
         let direction = 'ascending';
